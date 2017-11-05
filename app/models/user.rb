@@ -25,4 +25,17 @@ class User < ApplicationRecord
   def want?(item)
     self.want_items.include?(item)
   end
+  
+  def have(item)
+    self.haves.find_or_create_by(item_id: item.id)
+  end
+
+  def unhave(item)
+    have = self.haves.find_by(item_id: item.id)
+    have.destroy if have
+  end
+
+  def have?(item)
+    self.have_items.include?(item)
+  end
 end

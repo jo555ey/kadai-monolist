@@ -2,14 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   include SessionsHelper
-
-  private
-
-  def require_user_logged_in
-    unless logged_in?
-      redirect_to login_url
-    end
-  end
   
   def read(result)
     code = result['itemCode']
@@ -23,5 +15,13 @@ class ApplicationController < ActionController::Base
       url: url,
       image_url: image_url,
     }
+  end
+  
+    private
+
+  def require_user_logged_in
+    unless logged_in?
+      redirect_to login_url
+    end
   end
 end

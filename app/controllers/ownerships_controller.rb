@@ -16,7 +16,7 @@ class OwnershipsController < ApplicationController
       flash[:success] = '商品を Want しました。'
     end
     
-    if params[:type] == 'Hant'
+    if params[:type] == 'Have'
       current_user.have(@item)
       flash[:success] = '商品を Have しました。'
     end
